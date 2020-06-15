@@ -1,0 +1,68 @@
+div#div{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color:#de3535;
+}
+div#div2{
+    display: flex;
+    margin-top: 2vh;
+    flex-direction: row;
+    justify-content: center;
+    background-color:#de3535;
+}
+div#divprinc{
+    position: fixed;
+    top: 5vh;
+    left: 0;
+    right: 0;
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  
+}
+input#inp{
+    text-align: center;
+    background-color: white;
+    align-content: center;
+    height: 23px;
+    width: 300px;
+    margin-right: 5px;
+    border-radius: 3px;
+    border: transparent;
+}
+img#logo{
+    left: 10px;
+    position: fixed;
+    flex-direction: row;
+    justify-content: center;
+}
+
+button#but{
+    width: 25px;
+    height: 25px;
+    background-color: white;
+    border: transparent;
+    border-radius: 3px;   
+}
+form#form{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+div#icon{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+img#icon{
+    width: 20px;
+    height: 20px;
+}

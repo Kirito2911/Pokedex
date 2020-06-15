@@ -1,0 +1,39 @@
+var aux; 
+
+    var id = document.createElement('h1');
+    id.textContent = jsonObj['id'];
+    document.body.appendChild(id);
+
+    
+    var name = document.createElement('h1');
+    name.textContent = jsonObj['name'];
+    document.body.appendChild(name);
+
+    var tamanho = document.createElement('h1');
+    aux = parseFloat( jsonObj['height'])/10; 
+    tamanho.textContent = aux + " m";
+    document.body.appendChild(tamanho);
+
+    var peso= document.createElement('h1');
+    aux = parseFloat( jsonObj['weight'] + "00")/1000; 
+    peso.textContent = aux + " kg";
+    document.body.appendChild(peso);
+    
+    //to aqui
+    var types = document.createElement('h1');
+    types.textContent = jsonObj.types[0].type.name;
+    document.body.appendChild(types);
+    if(jsonObj.types[1]!=null){
+        var types1 = document.createElement('h1');
+        types1.textContent = jsonObj.types[1].type.name;
+        document.body.appendChild(types1); 
+        if(jsonObj.types[2]!=null){
+            var types2 = document.createElement('h1');
+            types2.textContent = jsonObj.types[2].type.name;
+            document.body.appendChild(types2);  
+    }}
+
+    var imagem= document.createElement('img');
+    imagem.src= jsonObj.sprites.front_default;
+    document.body.appendChild(imagem);
+    

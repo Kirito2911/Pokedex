@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Pokedex</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/pokemon.css'>
+    <!--<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>-->
+</head>
+<body>
+    <div id="div">
+        <img id="logo" src="css/logo.png" width="90" height="31">
+        <div id="div2">
+            <form action="pokemon.html" method="GET" id="form">
+                <input type="text" name="inp" id="inp">  
+                <button type="submit" value="submit" id="but"><div id="icon"><img id="icon" src="css/search.png"></div></button>
+            </form>    
+        </div>
+        <div id="divprinc" >
+            
+    </div>
+    <br>
+    
+<script>
+var pokename = window.location.search.replace("?inp=","").toLowerCase(); 
+//parte que busca o conteudo do api
+var requestURL = 'https://pokeapi.co/api/v2/pokemon/'+ pokename;
+var request = new XMLHttpRequest();
+    request.open('GET', requestURL);
+    request.responseType = 'json';
+    request.send();
+    request.onload = function() {
+    var pokemon = request.response; 
+    console.log(pokemon);
+   
+     //se o resultado for valido
+     if(pokemon!=null){
+        var a = document.body.querySelector("div#divprinc");
+        a.innerHTML = populateHeader(pokemon);
+     }
+     //se o resultado da busca nao for valido
+     else{
+        var a = document.body.querySelector("div#divprinc");
+        a.innerHTML = criarNExiste();
+             }
+    
+    }
+
+function criarNExiste(){
+    var card=`
+    <div style="display: flex;flex-direction: row;justify-content: center;align-items: center;">
+            <div style="display: flex;flex-direction: column;justify-content: center;align-items: center;border-radius: 10px;width: 300px;height: 100px;background-color:#ed8b82;">
+                 <div style="display: flex;flex-direction: row;justify-content: center;align-items: center;">
+                    <h1 style=" font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Pokemon não existe</h1>
+                </div>
+            </div>
+    </div>    
+           `; 
+    return card;
+  
+}
+
+
+function populateHeader(jsonObj){
+    var aux; 
+
+    var id = jsonObj['id'];
+
+    
+    var name = jsonObj['name'];
+
+    aux = parseFloat( jsonObj['height'])/10; 
+    var tamanho =  aux + " m";
+
+    aux = parseFloat( jsonObj['weight'] + "00")/1000; 
+    var peso = aux + " kg";
+
+    var imagem= jsonObj.sprites.front_default;
+    
+    var card=`
+    <div style="display: flex;flex-direction: row;justify-content: center;align-items: center;">
+            <div style="display: flex;flex-direction: column;justify-content: center;align-items: center;border-radius: 10px;width: 500px;height: 250px;background-color:#ed8b82;">
+                 <div style="display: flex;flex-direction: row;justify-content: center;align-items: center;">
+                    <div style={width: 200px;}>
+                    <img src="${imagem}" width=150px heigth="100px">
+                    </div>
+                    <div style={width: 300px;}>
+                        <h1>Nº ${id}</h1>
+                        <h1>Name: ${name}</h1>
+                        <h1>Height: ${tamanho}</h1>
+                        <h1>Weight: ${peso}</h1>
+                    </div>
+                </div>
+            </div>
+    </div>   
+    `;
+    return card;
+}
+
+
+
+
+
+</script>
+</body>
+</html>
