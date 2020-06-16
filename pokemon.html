@@ -79,18 +79,26 @@ function populateHeader(jsonObj){
 
     var imagem= jsonObj.sprites.front_default;
     
+    var types = jsonObj.types[0].type.name;
+    if(jsonObj.types[1]!=null){
+        var types = types +" and "+ jsonObj.types[1].type.name; 
+        if(jsonObj.types[2]!=null){
+            var types = types +" and "+ jsonObj.types[2].type.name;  
+    }}
+
     var card=`
     <div style="display: flex;flex-direction: row;justify-content: center;align-items: center;">
-            <div style="display: flex;flex-direction: column;justify-content: center;align-items: center;border-radius: 10px;width: 500px;height: 250px;background-color:#ed8b82;">
+            <div style="display: flex;flex-direction: column;justify-content: center;align-items: center;border-radius: 10px;width: 400px;height: 250px;background-color:#ed8b82;">
                  <div style="display: flex;flex-direction: row;justify-content: center;align-items: center;">
                     <div style={width: 200px;}>
                     <img src="${imagem}" width=150px heigth="100px">
                     </div>
                     <div style={width: 300px;}>
-                        <h1>Nº ${id}</h1>
-                        <h1>Name: ${name}</h1>
-                        <h1>Height: ${tamanho}</h1>
-                        <h1>Weight: ${peso}</h1>
+                        <h1 style=" color:#141414; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size:20px;">Nº ${id}</h1>
+                        <h1 style=" color:#141414; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size:20px;">Name: ${name}</h1>
+                        <h1 style=" color:#141414; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;font-size:20px;">Height: ${tamanho}</h1>
+                        <h1 style=" color:#141414; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;font-size:20px;">Weight: ${peso}</h1>
+                        <h1 style=" color:#141414; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size:20px;">Type: ${types}</h1>
                     </div>
                 </div>
             </div>

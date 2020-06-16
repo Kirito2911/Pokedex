@@ -30,6 +30,7 @@ div#divprinc{
 input#inp{
     text-align: center;
     background-color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     align-content: center;
     height: 23px;
     width: 300px;
